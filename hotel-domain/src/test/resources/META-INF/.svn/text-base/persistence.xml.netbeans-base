@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="TestPU" transaction-type="RESOURCE_LOCAL">
+    <mapping-file>orm-crud-queries.xml</mapping-file>
+    <mapping-file>orm-chart-queries.xml</mapping-file>
+    <mapping-file>orm-synch-queries.xml</mapping-file>
+    <class>br.com.lavasigma.model.domain.Accountable</class>
+    <class>br.com.lavasigma.model.domain.Company</class>
+    <class>br.com.lavasigma.model.domain.CompanyUser</class>
+    <class>br.com.lavasigma.model.domain.ComputerParameter</class>
+    <class>br.com.lavasigma.model.domain.Customer</class>
+    <class>br.com.lavasigma.model.domain.CustomerAllowedToUser</class>
+    <class>br.com.lavasigma.model.domain.CustomerUser</class>
+    <class>br.com.lavasigma.model.domain.LogFile</class>
+    <class>br.com.lavasigma.model.domain.PerformedService</class>
+    <class>br.com.lavasigma.model.domain.ServiceOrder</class>
+    <class>br.com.lavasigma.model.domain.SubArea</class>
+    <class>br.com.lavasigma.model.domain.User</class>
+    <class>br.com.lavasigma.model.domain.WorkDay</class>
+    <class>br.com.lavasigma.model.domain.event.BatchUnityEventType</class>
+    <class>br.com.lavasigma.model.domain.event.impl.BatchCreation</class>
+    <class>br.com.lavasigma.model.domain.event.impl.BatchUnityActivation</class>
+    <class>br.com.lavasigma.model.domain.event.impl.BatchUnityCheckout</class>
+    <class>br.com.lavasigma.model.domain.event.impl.BatchUnityInventory</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Collect</class>
+    <class>br.com.lavasigma.model.domain.event.impl.CustomerReturn</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Delivery</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Distribution</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Pendency</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Reap</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Receipt</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Rewash</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Transportation</class>
+    <class>br.com.lavasigma.model.domain.inventory.Batch</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchInventory</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchInventoryItem</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchUnity</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchUnityHistory</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchUnityStatus</class>
+    <class>br.com.lavasigma.model.domain.inventory.ClothesColor</class>
+    <class>br.com.lavasigma.model.domain.inventory.ClothesType</class>
+    <class>br.com.lavasigma.model.domain.inventory.DailyInventory</class>
+    <class>br.com.lavasigma.model.domain.inventory.Nonconforming</class>
+    <class>br.com.lavasigma.model.domain.inventory.NonconformingView</class>
+    <class>br.com.lavasigma.model.dw.TimeDimension</class>
+    <class>br.com.lavasigma.model.dw.fact.EventPerBatchFact</class>
+    <class>br.com.lavasigma.model.dw.fact.EventPerBatchUnityFact</class>
+    <class>br.com.lavasigma.model.domain.Requester</class>
+    <class>br.com.lavasigma.model.domain.UserGroup</class>
+    <class>br.com.lavasigma.model.dw.EventPerSubareaAndBatchFact</class>
+    <shared-cache-mode>ALL</shared-cache-mode>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.1.3:5432/lavasigma_test"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.password" value="postgres"/>
+      <property name="eclipselink.logging.level" value="INFO"/>
+      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.level.cache" value="FINEST"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+    </properties>
+  </persistence-unit>
+  <!-- To be used by tests that need to access the real database -->
+  <persistence-unit name="LavaSigmaPU" transaction-type="RESOURCE_LOCAL">
+    <mapping-file>orm-crud-queries.xml</mapping-file>
+    <mapping-file>orm-chart-queries.xml</mapping-file>
+    <mapping-file>orm-synch-queries.xml</mapping-file>
+    <class>br.com.lavasigma.model.domain.Accountable</class>
+    <class>br.com.lavasigma.model.domain.Company</class>
+    <class>br.com.lavasigma.model.domain.CompanyUser</class>
+    <class>br.com.lavasigma.model.domain.ComputerParameter</class>
+    <class>br.com.lavasigma.model.domain.Customer</class>
+    <class>br.com.lavasigma.model.domain.CustomerAllowedToUser</class>
+    <class>br.com.lavasigma.model.domain.CustomerUser</class>
+    <class>br.com.lavasigma.model.domain.LogFile</class>
+    <class>br.com.lavasigma.model.domain.PerformedService</class>
+    <class>br.com.lavasigma.model.domain.ServiceOrder</class>
+    <class>br.com.lavasigma.model.domain.SubArea</class>
+    <class>br.com.lavasigma.model.domain.User</class>
+    <class>br.com.lavasigma.model.domain.WorkDay</class>
+    <class>br.com.lavasigma.model.domain.event.BatchUnityEventType</class>
+    <class>br.com.lavasigma.model.domain.event.impl.BatchCreation</class>
+    <class>br.com.lavasigma.model.domain.event.impl.BatchUnityActivation</class>
+    <class>br.com.lavasigma.model.domain.event.impl.BatchUnityCheckout</class>
+    <class>br.com.lavasigma.model.domain.event.impl.BatchUnityInventory</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Collect</class>
+    <class>br.com.lavasigma.model.domain.event.impl.CustomerReturn</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Delivery</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Distribution</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Pendency</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Reap</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Receipt</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Rewash</class>
+    <class>br.com.lavasigma.model.domain.event.impl.Transportation</class>
+    <class>br.com.lavasigma.model.domain.inventory.Batch</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchInventory</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchInventoryItem</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchUnity</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchUnityHistory</class>
+    <class>br.com.lavasigma.model.domain.inventory.BatchUnityStatus</class>
+    <class>br.com.lavasigma.model.domain.inventory.ClothesColor</class>
+    <class>br.com.lavasigma.model.domain.inventory.ClothesType</class>
+    <class>br.com.lavasigma.model.domain.inventory.DailyInventory</class>
+    <class>br.com.lavasigma.model.domain.inventory.Nonconforming</class>
+    <class>br.com.lavasigma.model.domain.inventory.NonconformingView</class>
+    <class>br.com.lavasigma.model.dw.TimeDimension</class>
+    <class>br.com.lavasigma.model.dw.fact.EventPerBatchFact</class>
+    <class>br.com.lavasigma.model.dw.fact.EventPerBatchUnityFact</class>
+    <class>br.com.lavasigma.model.domain.Requester</class>
+    <class>br.com.lavasigma.model.domain.UserGroup</class>
+    <class>br.com.lavasigma.model.dw.EventPerSubareaAndBatchFact</class>
+    <shared-cache-mode>ALL</shared-cache-mode>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.1.3:5432/lavasigma"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.password" value="postgres"/>
+      <property name="eclipselink.logging.level" value="INFO"/>
+      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.level.cache" value="FINEST"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="TestPU" transaction-type="RESOURCE_LOCAL">
+    <mapping-file>orm-crud-queries.xml</mapping-file>
+    <mapping-file>orm-chart-queries.xml</mapping-file>
+    <mapping-file>orm-synch-queries.xml</mapping-file>
+    <class>br.com.cmd.hotel.domain.dao.Ambientes</class>
+    <class>br.com.cmd.hotel.domain.dao.Camas</class>
+    <class>br.com.cmd.hotel.domain.dao.Cardapios</class>
+    <class>br.com.cmd.hotel.domain.dao.Cep</class>
+    <class>br.com.cmd.hotel.domain.dao.Chat</class>
+    <class>br.com.cmd.hotel.domain.dao.Cidades</class>
+    <class>br.com.cmd.hotel.domain.dao.Estados</class>
+    <class>br.com.cmd.hotel.domain.dao.Financeiro</class>
+    <class>br.com.cmd.hotel.domain.dao.Hoteis</class>
+    <class>br.com.cmd.hotel.domain.dao.ItensReserva</class>
+    <class>br.com.cmd.hotel.domain.dao.Logradouros</class>
+    <class>br.com.cmd.hotel.domain.dao.Logradouroxusuario</class>
+    <class>br.com.cmd.hotel.domain.dao.Niveis</class>
+    <class>br.com.cmd.hotel.domain.dao.Pacotes</class>
+    <class>br.com.cmd.hotel.domain.dao.Pacotexusuario</class>
+    <class>br.com.cmd.hotel.domain.dao.Pagamentos</class>
+    <class>br.com.cmd.hotel.domain.dao.Paises</class>
+    <class>br.com.cmd.hotel.domain.dao.Quartos</class>
+    <class>br.com.cmd.hotel.domain.dao.Quartoxcama</class>
+    <class>br.com.cmd.hotel.domain.dao.Ramais</class>
+    <class>br.com.cmd.hotel.domain.dao.Reservas</class>
+    <class>br.com.cmd.hotel.domain.dao.Servicos</class>
+    <class>br.com.cmd.hotel.domain.dao.Telefones</class>
+    <class>br.com.cmd.hotel.domain.dao.TiposQuartos</class>
+    <class>br.com.cmd.hotel.domain.dao.Usuarios</class>
+    <class>br.com.cmd.hotel.domain.dao.Usuarioxchat</class>
+    <shared-cache-mode>ALL</shared-cache-mode>
+    <properties>
+        <!-- MySQL -->  
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>  
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hotel_test"/>  
+      <property name="javax.persistence.jdbc.user" value="root"/>  
+      <property name="javax.persistence.jdbc.password" value="porto90"/>  
+      <!-- EclipseLink should create the database schema automatically -->  
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>  
+      <property name="eclipselink.ddl-generation.output-mode" value="database"/>  
+ 
+ <!--      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:9090/hotel_test"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.password" value="postgres"/>
+      <property name="eclipselink.logging.level" value="INFO"/>
+      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.level.cache" value="FINEST"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>-->
+    </properties>
+  </persistence-unit>
+</persistence>
