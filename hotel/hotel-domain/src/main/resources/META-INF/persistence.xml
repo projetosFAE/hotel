@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="br.com.cmd_hotel-domain_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.cmd.hotel.domain.Chat</class>
+    <class>com.cmd.hotel.domain.Cardapios</class>
+    <class>com.cmd.hotel.domain.Logradouros</class>
+    <class>com.cmd.hotel.domain.Paises</class>
+    <class>com.cmd.hotel.domain.Ramais</class>
+    <class>com.cmd.hotel.domain.Ambientes</class>
+    <class>com.cmd.hotel.domain.Cep</class>
+    <class>com.cmd.hotel.domain.Quartoxcamas</class>
+    <class>com.cmd.hotel.domain.Niveis</class>
+    <class>com.cmd.hotel.domain.Servicos</class>
+    <class>com.cmd.hotel.domain.Estados</class>
+    <class>com.cmd.hotel.domain.Usuarioxchat</class>
+    <class>com.cmd.hotel.domain.Hoteis</class>
+    <class>com.cmd.hotel.domain.Camas</class>
+    <class>com.cmd.hotel.domain.Pacotes</class>
+    <class>com.cmd.hotel.domain.Cidades</class>
+    <class>com.cmd.hotel.domain.Telefones</class>
+    <class>com.cmd.hotel.domain.Quartos</class>
+    <class>com.cmd.hotel.domain.Logradouroxusuario</class>
+    <class>com.cmd.hotel.domain.ItensReservas</class>
+    <class>com.cmd.hotel.domain.Usuarios</class>
+    <class>com.cmd.hotel.domain.TiposQuartos</class>
+    <class>com.cmd.hotel.domain.Cardapiotipos</class>
+    <class>com.cmd.hotel.domain.Reservas</class>
+    <class>com.cmd.hotel.domain.Pagamentos</class>
+    <class>com.cmd.hotel.domain.Financeiros</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hotel_v1"/>
+      <property name="javax.persistence.jdbc.password" value="porto90"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+    </properties>
+  </persistence-unit>
+</persistence>

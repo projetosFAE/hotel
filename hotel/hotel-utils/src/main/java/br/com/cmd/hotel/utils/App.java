@@ -1,4 +1,4 @@
-package br.com.cmd.hoteldomain;
+package br.com.cmd.hotel.utils;
 
 /**
  * Hello world!

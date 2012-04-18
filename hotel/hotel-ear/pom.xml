@@ -44,6 +44,12 @@
     <dependencies>
         <dependency>
             <groupId>br.com.cmd</groupId>
+            <artifactId>hotel-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>br.com.cmd</groupId>
             <artifactId>hotel-ejb</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>ejb</type>
@@ -53,6 +59,18 @@
             <artifactId>hotel-web</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.2</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 </project>
