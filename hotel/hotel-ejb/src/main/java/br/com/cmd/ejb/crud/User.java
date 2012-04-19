@@ -3,7 +3,7 @@
  */
 package br.com.cmd.ejb.crud;
 
-import br.com.hotel.model.domain.Persistent;
+import com.hotel.model.domain.Persistent;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
