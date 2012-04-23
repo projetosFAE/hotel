@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author AlexPorto
+ * @author AlexPorto e marcos
  */
 @Entity
 @Table(name = "ambientes")
