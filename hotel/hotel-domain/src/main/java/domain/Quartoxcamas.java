@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -26,10 +26,10 @@ public class Quartoxcamas implements Serializable {
     private String quartoXcama;
     @JoinColumn(name = "quarto", referencedColumnName = "quarto")
     @ManyToOne(optional = false)
-    private Quartos quarto;
+    private Quartos quartos;
     @JoinColumn(name = "cama", referencedColumnName = "cama")
     @ManyToOne(optional = false)
-    private Camas cama;
+    private Camas camas;
 
     public Quartoxcamas() {
     }
@@ -46,20 +46,20 @@ public class Quartoxcamas implements Serializable {
         this.quartoXcama = quartoXcama;
     }
 
-    public Quartos getQuarto() {
-        return quarto;
+    public Quartos getQuartos() {
+        return quartos;
     }
 
-    public void setQuarto(Quartos quarto) {
-        this.quarto = quarto;
+    public void setQuartos(Quartos quartos) {
+        this.quartos = quartos;
     }
 
-    public Camas getCama() {
-        return cama;
+    public Camas getCamas() {
+        return camas;
     }
 
-    public void setCama(Camas cama) {
-        this.cama = cama;
+    public void setCamas(Camas camas) {
+        this.camas = camas;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class Quartoxcamas implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Quartoxcamas[ quartoXcama=" + quartoXcama + " ]";
+        return "domain.Quartoxcamas[ quartoXcama=" + quartoXcama + " ]";
     }
     
 }

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -55,13 +55,13 @@ public class Cardapios implements Serializable {
     private Date cardapioDataCadastro;
     @JoinColumn(name = "cardapioTipo", referencedColumnName = "cardapioTipo")
     @ManyToOne(optional = false)
-    private Cardapiotipos cardapioTipo;
+    private Cardapiotipos cardapiotipos;
     @JoinColumn(name = "hotel", referencedColumnName = "hotel")
     @ManyToOne(optional = false)
-    private Hoteis hotel;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardapio")
+    private Hoteis hoteis;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardapios")
     private List<ItensReservas> itensReservasList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardapio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardapios")
     private List<Pacotes> pacotesList;
 
     public Cardapios() {
@@ -135,20 +135,20 @@ public class Cardapios implements Serializable {
         this.cardapioDataCadastro = cardapioDataCadastro;
     }
 
-    public Cardapiotipos getCardapioTipo() {
-        return cardapioTipo;
+    public Cardapiotipos getCardapiotipos() {
+        return cardapiotipos;
     }
 
-    public void setCardapioTipo(Cardapiotipos cardapioTipo) {
-        this.cardapioTipo = cardapioTipo;
+    public void setCardapiotipos(Cardapiotipos cardapiotipos) {
+        this.cardapiotipos = cardapiotipos;
     }
 
-    public Hoteis getHotel() {
-        return hotel;
+    public Hoteis getHoteis() {
+        return hoteis;
     }
 
-    public void setHotel(Hoteis hotel) {
-        this.hotel = hotel;
+    public void setHoteis(Hoteis hoteis) {
+        this.hoteis = hoteis;
     }
 
     @XmlTransient
@@ -191,7 +191,7 @@ public class Cardapios implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Cardapios[ cardapio=" + cardapio + " ]";
+        return "domain.Cardapios[ cardapio=" + cardapio + " ]";
     }
     
 }

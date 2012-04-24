@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -49,19 +49,19 @@ public class Quartos implements Serializable {
     @Column(name = "quarto_data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date quartoDataCadastro;
-    @OneToMany(mappedBy = "quarto")
+    @OneToMany(mappedBy = "quartos")
     private List<Ramais> ramaisList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quarto")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quartos")
     private List<Quartoxcamas> quartoxcamasList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quarto")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quartos")
     private List<ItensReservas> itensReservasList;
     @JoinColumn(name = "tipos_quarto", referencedColumnName = "tipos_quartos")
     @ManyToOne(optional = false)
-    private TiposQuartos tiposQuarto;
+    private TiposQuartos tiposQuartos;
     @JoinColumn(name = "hotel", referencedColumnName = "hotel")
     @ManyToOne(optional = false)
-    private Hoteis hotel;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quarto")
+    private Hoteis hoteis;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quartos")
     private List<Pacotes> pacotesList;
 
     public Quartos() {
@@ -154,20 +154,20 @@ public class Quartos implements Serializable {
         this.itensReservasList = itensReservasList;
     }
 
-    public TiposQuartos getTiposQuarto() {
-        return tiposQuarto;
+    public TiposQuartos getTiposQuartos() {
+        return tiposQuartos;
     }
 
-    public void setTiposQuarto(TiposQuartos tiposQuarto) {
-        this.tiposQuarto = tiposQuarto;
+    public void setTiposQuartos(TiposQuartos tiposQuartos) {
+        this.tiposQuartos = tiposQuartos;
     }
 
-    public Hoteis getHotel() {
-        return hotel;
+    public Hoteis getHoteis() {
+        return hoteis;
     }
 
-    public void setHotel(Hoteis hotel) {
-        this.hotel = hotel;
+    public void setHoteis(Hoteis hoteis) {
+        this.hoteis = hoteis;
     }
 
     @XmlTransient
@@ -201,7 +201,7 @@ public class Quartos implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Quartos[ quarto=" + quarto + " ]";
+        return "domain.Quartos[ quarto=" + quarto + " ]";
     }
     
 }

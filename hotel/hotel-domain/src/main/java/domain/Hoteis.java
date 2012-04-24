@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -48,17 +48,17 @@ public class Hoteis implements Serializable {
     private String hotelObservacoes;
     @Column(name = "hotel_gerente")
     private String hotelGerente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hoteis")
     private List<Ambientes> ambientesList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hoteis")
     private List<Cardapios> cardapiosList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hoteis")
     private List<Logradouroxusuario> logradouroxusuarioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hoteis")
     private List<Quartos> quartosList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hoteis")
     private List<Telefones> telefonesList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hoteis")
     private List<Servicos> servicosList;
 
     public Hoteis() {
@@ -208,7 +208,7 @@ public class Hoteis implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Hoteis[ hotel=" + hotel + " ]";
+        return "domain.Hoteis[ hotel=" + hotel + " ]";
     }
     
 }

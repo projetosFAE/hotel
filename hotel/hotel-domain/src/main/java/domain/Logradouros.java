@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -34,7 +34,7 @@ public class Logradouros implements Serializable {
     @Basic(optional = false)
     @Column(name = "logradouro_numero")
     private String logradouroNumero;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "logradouro")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "logradouros")
     private List<Cep> cepList;
 
     public Logradouros() {
@@ -105,7 +105,7 @@ public class Logradouros implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Logradouros[ logradouro=" + logradouro + " ]";
+        return "domain.Logradouros[ logradouro=" + logradouro + " ]";
     }
     
 }

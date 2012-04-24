@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -42,22 +42,22 @@ public class ItensReservas implements Serializable {
     private Date itensDataFinal;
     @JoinColumn(name = "pacote", referencedColumnName = "pacote")
     @ManyToOne(optional = false)
-    private Pacotes pacote;
+    private Pacotes pacotes;
     @JoinColumn(name = "reserva", referencedColumnName = "reserva")
     @ManyToOne(optional = false)
-    private Reservas reserva;
+    private Reservas reservas;
     @JoinColumn(name = "servico", referencedColumnName = "servico")
     @ManyToOne(optional = false)
-    private Servicos servico;
+    private Servicos servicos;
     @JoinColumn(name = "ambiente", referencedColumnName = "ambiente")
     @ManyToOne(optional = false)
-    private Ambientes ambiente;
+    private Ambientes ambientes;
     @JoinColumn(name = "cardapio", referencedColumnName = "cardapio")
     @ManyToOne(optional = false)
-    private Cardapios cardapio;
+    private Cardapios cardapios;
     @JoinColumn(name = "quarto", referencedColumnName = "quarto")
     @ManyToOne(optional = false)
-    private Quartos quarto;
+    private Quartos quartos;
 
     public ItensReservas() {
     }
@@ -105,52 +105,52 @@ public class ItensReservas implements Serializable {
         this.itensDataFinal = itensDataFinal;
     }
 
-    public Pacotes getPacote() {
-        return pacote;
+    public Pacotes getPacotes() {
+        return pacotes;
     }
 
-    public void setPacote(Pacotes pacote) {
-        this.pacote = pacote;
+    public void setPacotes(Pacotes pacotes) {
+        this.pacotes = pacotes;
     }
 
-    public Reservas getReserva() {
-        return reserva;
+    public Reservas getReservas() {
+        return reservas;
     }
 
-    public void setReserva(Reservas reserva) {
-        this.reserva = reserva;
+    public void setReservas(Reservas reservas) {
+        this.reservas = reservas;
     }
 
-    public Servicos getServico() {
-        return servico;
+    public Servicos getServicos() {
+        return servicos;
     }
 
-    public void setServico(Servicos servico) {
-        this.servico = servico;
+    public void setServicos(Servicos servicos) {
+        this.servicos = servicos;
     }
 
-    public Ambientes getAmbiente() {
-        return ambiente;
+    public Ambientes getAmbientes() {
+        return ambientes;
     }
 
-    public void setAmbiente(Ambientes ambiente) {
-        this.ambiente = ambiente;
+    public void setAmbientes(Ambientes ambientes) {
+        this.ambientes = ambientes;
     }
 
-    public Cardapios getCardapio() {
-        return cardapio;
+    public Cardapios getCardapios() {
+        return cardapios;
     }
 
-    public void setCardapio(Cardapios cardapio) {
-        this.cardapio = cardapio;
+    public void setCardapios(Cardapios cardapios) {
+        this.cardapios = cardapios;
     }
 
-    public Quartos getQuarto() {
-        return quarto;
+    public Quartos getQuartos() {
+        return quartos;
     }
 
-    public void setQuarto(Quartos quarto) {
-        this.quarto = quarto;
+    public void setQuartos(Quartos quartos) {
+        this.quartos = quartos;
     }
 
     @Override
@@ -175,7 +175,7 @@ public class ItensReservas implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.ItensReservas[ itensReserva=" + itensReserva + " ]";
+        return "domain.ItensReservas[ itensReserva=" + itensReserva + " ]";
     }
     
 }

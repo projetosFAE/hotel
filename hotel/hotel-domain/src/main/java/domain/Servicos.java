@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -44,13 +44,13 @@ public class Servicos implements Serializable {
     @Column(name = "servico_data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date servicoDataCadastro;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servico")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicos")
     private List<ItensReservas> itensReservasList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servico")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicos")
     private List<Pacotes> pacotesList;
     @JoinColumn(name = "hotel", referencedColumnName = "hotel")
     @ManyToOne(optional = false)
-    private Hoteis hotel;
+    private Hoteis hoteis;
 
     public Servicos() {
     }
@@ -123,12 +123,12 @@ public class Servicos implements Serializable {
         this.pacotesList = pacotesList;
     }
 
-    public Hoteis getHotel() {
-        return hotel;
+    public Hoteis getHoteis() {
+        return hoteis;
     }
 
-    public void setHotel(Hoteis hotel) {
-        this.hotel = hotel;
+    public void setHoteis(Hoteis hoteis) {
+        this.hoteis = hoteis;
     }
 
     @Override
@@ -153,7 +153,7 @@ public class Servicos implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Servicos[ servico=" + servico + " ]";
+        return "domain.Servicos[ servico=" + servico + " ]";
     }
     
 }

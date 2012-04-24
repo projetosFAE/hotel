@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -50,17 +50,17 @@ public class Usuarios implements Serializable {
     @Basic(optional = false)
     @Column(name = "usuario_senha")
     private String usuarioSenha;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios")
     private List<Usuarioxchat> usuarioxchatList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios")
     private List<Logradouroxusuario> logradouroxusuarioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios")
     private List<Reservas> reservasList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios")
     private List<Telefones> telefonesList;
     @JoinColumn(name = "nivel", referencedColumnName = "nivel")
     @ManyToOne(optional = false)
-    private Niveis nivel;
+    private Niveis niveis;
 
     public Usuarios() {
     }
@@ -171,12 +171,12 @@ public class Usuarios implements Serializable {
         this.telefonesList = telefonesList;
     }
 
-    public Niveis getNivel() {
-        return nivel;
+    public Niveis getNiveis() {
+        return niveis;
     }
 
-    public void setNivel(Niveis nivel) {
-        this.nivel = nivel;
+    public void setNiveis(Niveis niveis) {
+        this.niveis = niveis;
     }
 
     @Override
@@ -201,7 +201,7 @@ public class Usuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Usuarios[ usuario=" + usuario + " ]";
+        return "domain.Usuarios[ usuario=" + usuario + " ]";
     }
     
 }

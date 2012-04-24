@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,7 +30,7 @@ public class Niveis implements Serializable {
     @Basic(optional = false)
     @Column(name = "nivel_nome")
     private String nivelNome;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nivel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "niveis")
     private List<Usuarios> usuariosList;
 
     public Niveis() {
@@ -92,7 +92,7 @@ public class Niveis implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Niveis[ nivel=" + nivel + " ]";
+        return "domain.Niveis[ nivel=" + nivel + " ]";
     }
     
 }

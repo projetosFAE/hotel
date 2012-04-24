@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -92,7 +92,7 @@ public class Chat implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Chat[ chat=" + chat + " ]";
+        return "domain.Chat[ chat=" + chat + " ]";
     }
     
 }

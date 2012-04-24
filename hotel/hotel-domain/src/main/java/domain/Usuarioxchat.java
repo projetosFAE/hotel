@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -29,7 +29,7 @@ public class Usuarioxchat implements Serializable {
     private Chat chat;
     @JoinColumn(name = "usuario", referencedColumnName = "usuario")
     @ManyToOne(optional = false)
-    private Usuarios usuario;
+    private Usuarios usuarios;
 
     public Usuarioxchat() {
     }
@@ -54,12 +54,12 @@ public class Usuarioxchat implements Serializable {
         this.chat = chat;
     }
 
-    public Usuarios getUsuario() {
-        return usuario;
+    public Usuarios getUsuarios() {
+        return usuarios;
     }
 
-    public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class Usuarioxchat implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Usuarioxchat[ usuarioXchat=" + usuarioXchat + " ]";
+        return "domain.Usuarioxchat[ usuarioXchat=" + usuarioXchat + " ]";
     }
     
 }

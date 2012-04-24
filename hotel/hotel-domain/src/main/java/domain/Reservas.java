@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -36,10 +36,10 @@ public class Reservas implements Serializable {
     private boolean reservaFinalizado;
     @JoinColumn(name = "usuario", referencedColumnName = "usuario")
     @ManyToOne(optional = false)
-    private Usuarios usuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reserva")
+    private Usuarios usuarios;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reservas")
     private List<ItensReservas> itensReservasList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reserva")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reservas")
     private List<Financeiros> financeirosList;
 
     public Reservas() {
@@ -79,12 +79,12 @@ public class Reservas implements Serializable {
         this.reservaFinalizado = reservaFinalizado;
     }
 
-    public Usuarios getUsuario() {
-        return usuario;
+    public Usuarios getUsuarios() {
+        return usuarios;
     }
 
-    public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
     }
 
     @XmlTransient
@@ -127,7 +127,7 @@ public class Reservas implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Reservas[ reserva=" + reserva + " ]";
+        return "domain.Reservas[ reserva=" + reserva + " ]";
     }
     
 }

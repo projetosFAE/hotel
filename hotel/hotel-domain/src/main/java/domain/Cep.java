@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -28,10 +28,10 @@ public class Cep implements Serializable {
     private Integer cep;
     @JoinColumn(name = "logradouro", referencedColumnName = "logradouro")
     @ManyToOne(optional = false)
-    private Logradouros logradouro;
+    private Logradouros logradouros;
     @JoinColumn(name = "cidade", referencedColumnName = "cidade")
     @ManyToOne(optional = false)
-    private Cidades cidade;
+    private Cidades cidades;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cep")
     private List<Logradouroxusuario> logradouroxusuarioList;
 
@@ -50,20 +50,20 @@ public class Cep implements Serializable {
         this.cep = cep;
     }
 
-    public Logradouros getLogradouro() {
-        return logradouro;
+    public Logradouros getLogradouros() {
+        return logradouros;
     }
 
-    public void setLogradouro(Logradouros logradouro) {
-        this.logradouro = logradouro;
+    public void setLogradouros(Logradouros logradouros) {
+        this.logradouros = logradouros;
     }
 
-    public Cidades getCidade() {
-        return cidade;
+    public Cidades getCidades() {
+        return cidades;
     }
 
-    public void setCidade(Cidades cidade) {
-        this.cidade = cidade;
+    public void setCidades(Cidades cidades) {
+        this.cidades = cidades;
     }
 
     @XmlTransient
@@ -97,7 +97,7 @@ public class Cep implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Cep[ cep=" + cep + " ]";
+        return "domain.Cep[ cep=" + cep + " ]";
     }
     
 }

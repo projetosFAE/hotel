@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,11 +30,11 @@ public class Cidades implements Serializable {
     @Basic(optional = false)
     @Column(name = "cidade_nome")
     private String cidadeNome;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cidade")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cidades")
     private List<Cep> cepList;
     @JoinColumn(name = "estado", referencedColumnName = "estado")
     @ManyToOne(optional = false)
-    private Estados estado;
+    private Estados estados;
 
     public Cidades() {
     }
@@ -73,12 +73,12 @@ public class Cidades implements Serializable {
         this.cepList = cepList;
     }
 
-    public Estados getEstado() {
-        return estado;
+    public Estados getEstados() {
+        return estados;
     }
 
-    public void setEstado(Estados estado) {
-        this.estado = estado;
+    public void setEstados(Estados estados) {
+        this.estados = estados;
     }
 
     @Override
@@ -103,7 +103,7 @@ public class Cidades implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Cidades[ cidade=" + cidade + " ]";
+        return "domain.Cidades[ cidade=" + cidade + " ]";
     }
     
 }

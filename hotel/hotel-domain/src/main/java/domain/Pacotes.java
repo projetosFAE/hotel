@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -55,20 +55,20 @@ public class Pacotes implements Serializable {
     @Column(name = "pacote_data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date pacoteDataCadastro;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacote")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacotes")
     private List<ItensReservas> itensReservasList;
     @JoinColumn(name = "servico", referencedColumnName = "servico")
     @ManyToOne(optional = false)
-    private Servicos servico;
+    private Servicos servicos;
     @JoinColumn(name = "ambiente", referencedColumnName = "ambiente")
     @ManyToOne(optional = false)
-    private Ambientes ambiente;
+    private Ambientes ambientes;
     @JoinColumn(name = "cardapio", referencedColumnName = "cardapio")
     @ManyToOne(optional = false)
-    private Cardapios cardapio;
+    private Cardapios cardapios;
     @JoinColumn(name = "quarto", referencedColumnName = "quarto")
     @ManyToOne(optional = false)
-    private Quartos quarto;
+    private Quartos quartos;
 
     public Pacotes() {
     }
@@ -151,36 +151,36 @@ public class Pacotes implements Serializable {
         this.itensReservasList = itensReservasList;
     }
 
-    public Servicos getServico() {
-        return servico;
+    public Servicos getServicos() {
+        return servicos;
     }
 
-    public void setServico(Servicos servico) {
-        this.servico = servico;
+    public void setServicos(Servicos servicos) {
+        this.servicos = servicos;
     }
 
-    public Ambientes getAmbiente() {
-        return ambiente;
+    public Ambientes getAmbientes() {
+        return ambientes;
     }
 
-    public void setAmbiente(Ambientes ambiente) {
-        this.ambiente = ambiente;
+    public void setAmbientes(Ambientes ambientes) {
+        this.ambientes = ambientes;
     }
 
-    public Cardapios getCardapio() {
-        return cardapio;
+    public Cardapios getCardapios() {
+        return cardapios;
     }
 
-    public void setCardapio(Cardapios cardapio) {
-        this.cardapio = cardapio;
+    public void setCardapios(Cardapios cardapios) {
+        this.cardapios = cardapios;
     }
 
-    public Quartos getQuarto() {
-        return quarto;
+    public Quartos getQuartos() {
+        return quartos;
     }
 
-    public void setQuarto(Quartos quarto) {
-        this.quarto = quarto;
+    public void setQuartos(Quartos quartos) {
+        this.quartos = quartos;
     }
 
     @Override
@@ -205,7 +205,7 @@ public class Pacotes implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Pacotes[ pacote=" + pacote + " ]";
+        return "domain.Pacotes[ pacote=" + pacote + " ]";
     }
     
 }

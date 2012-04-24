@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -30,10 +30,10 @@ public class Ramais implements Serializable {
     private int ramalNumero;
     @JoinColumn(name = "ambiente", referencedColumnName = "ambiente")
     @ManyToOne
-    private Ambientes ambiente;
+    private Ambientes ambientes;
     @JoinColumn(name = "quarto", referencedColumnName = "quarto")
     @ManyToOne
-    private Quartos quarto;
+    private Quartos quartos;
 
     public Ramais() {
     }
@@ -63,20 +63,20 @@ public class Ramais implements Serializable {
         this.ramalNumero = ramalNumero;
     }
 
-    public Ambientes getAmbiente() {
-        return ambiente;
+    public Ambientes getAmbientes() {
+        return ambientes;
     }
 
-    public void setAmbiente(Ambientes ambiente) {
-        this.ambiente = ambiente;
+    public void setAmbientes(Ambientes ambientes) {
+        this.ambientes = ambientes;
     }
 
-    public Quartos getQuarto() {
-        return quarto;
+    public Quartos getQuartos() {
+        return quartos;
     }
 
-    public void setQuarto(Quartos quarto) {
-        this.quarto = quarto;
+    public void setQuartos(Quartos quartos) {
+        this.quartos = quartos;
     }
 
     @Override
@@ -101,7 +101,7 @@ public class Ramais implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Ramais[ ramal=" + ramal + " ]";
+        return "domain.Ramais[ ramal=" + ramal + " ]";
     }
     
 }

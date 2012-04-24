@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -38,10 +38,10 @@ public class Financeiros implements Serializable {
     private Date financeiroData;
     @JoinColumn(name = "reserva", referencedColumnName = "reserva")
     @ManyToOne(optional = false)
-    private Reservas reserva;
+    private Reservas reservas;
     @JoinColumn(name = "pagamento", referencedColumnName = "pagamento")
     @ManyToOne(optional = false)
-    private Pagamentos pagamento;
+    private Pagamentos pagamentos;
 
     public Financeiros() {
     }
@@ -80,20 +80,20 @@ public class Financeiros implements Serializable {
         this.financeiroData = financeiroData;
     }
 
-    public Reservas getReserva() {
-        return reserva;
+    public Reservas getReservas() {
+        return reservas;
     }
 
-    public void setReserva(Reservas reserva) {
-        this.reserva = reserva;
+    public void setReservas(Reservas reservas) {
+        this.reservas = reservas;
     }
 
-    public Pagamentos getPagamento() {
-        return pagamento;
+    public Pagamentos getPagamentos() {
+        return pagamentos;
     }
 
-    public void setPagamento(Pagamentos pagamento) {
-        this.pagamento = pagamento;
+    public void setPagamentos(Pagamentos pagamentos) {
+        this.pagamentos = pagamentos;
     }
 
     @Override
@@ -118,7 +118,7 @@ public class Financeiros implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Financeiros[ financeiro=" + financeiro + " ]";
+        return "domain.Financeiros[ financeiro=" + financeiro + " ]";
     }
     
 }

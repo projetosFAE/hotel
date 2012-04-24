@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -26,10 +26,10 @@ public class Logradouroxusuario implements Serializable {
     private Integer logradouroXusuario;
     @JoinColumn(name = "hotel", referencedColumnName = "hotel")
     @ManyToOne(optional = false)
-    private Hoteis hotel;
+    private Hoteis hoteis;
     @JoinColumn(name = "usuario", referencedColumnName = "usuario")
     @ManyToOne(optional = false)
-    private Usuarios usuario;
+    private Usuarios usuarios;
     @JoinColumn(name = "cep", referencedColumnName = "cep")
     @ManyToOne(optional = false)
     private Cep cep;
@@ -49,20 +49,20 @@ public class Logradouroxusuario implements Serializable {
         this.logradouroXusuario = logradouroXusuario;
     }
 
-    public Hoteis getHotel() {
-        return hotel;
+    public Hoteis getHoteis() {
+        return hoteis;
     }
 
-    public void setHotel(Hoteis hotel) {
-        this.hotel = hotel;
+    public void setHoteis(Hoteis hoteis) {
+        this.hoteis = hoteis;
     }
 
-    public Usuarios getUsuario() {
-        return usuario;
+    public Usuarios getUsuarios() {
+        return usuarios;
     }
 
-    public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
     }
 
     public Cep getCep() {
@@ -95,7 +95,7 @@ public class Logradouroxusuario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Logradouroxusuario[ logradouroXusuario=" + logradouroXusuario + " ]";
+        return "domain.Logradouroxusuario[ logradouroXusuario=" + logradouroXusuario + " ]";
     }
     
 }

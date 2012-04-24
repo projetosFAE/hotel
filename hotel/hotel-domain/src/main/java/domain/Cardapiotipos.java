@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cmd.hotel.domain;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,7 +30,7 @@ public class Cardapiotipos implements Serializable {
     @Basic(optional = false)
     @Column(name = "cardapioTipo_nome")
     private String cardapioTiponome;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardapioTipo")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardapiotipos")
     private List<Cardapios> cardapiosList;
 
     public Cardapiotipos() {
@@ -92,7 +92,7 @@ public class Cardapiotipos implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cmd.hoteldomain.domain.Cardapiotipos[ cardapioTipo=" + cardapioTipo + " ]";
+        return "domain.Cardapiotipos[ cardapioTipo=" + cardapioTipo + " ]";
     }
     
 }
