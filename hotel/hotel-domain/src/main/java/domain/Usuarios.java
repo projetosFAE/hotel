@@ -7,7 +7,6 @@ package domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -16,22 +15,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "usuarios")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u"),
-    @NamedQuery(name = "Usuarios.findByUsuario", query = "SELECT u FROM Usuarios u WHERE u.usuario = :usuario"),
-    @NamedQuery(name = "Usuarios.findByUsuarioNome", query = "SELECT u FROM Usuarios u WHERE u.usuarioNome = :usuarioNome"),
-    @NamedQuery(name = "Usuarios.findByUsuarioEmail", query = "SELECT u FROM Usuarios u WHERE u.usuarioEmail = :usuarioEmail"),
-    @NamedQuery(name = "Usuarios.findByUsuarioDocumentoTipo", query = "SELECT u FROM Usuarios u WHERE u.usuarioDocumentoTipo = :usuarioDocumentoTipo"),
-    @NamedQuery(name = "Usuarios.findByUsuarioDocumento", query = "SELECT u FROM Usuarios u WHERE u.usuarioDocumento = :usuarioDocumento"),
-    @NamedQuery(name = "Usuarios.findByUsuarioLogin", query = "SELECT u FROM Usuarios u WHERE u.usuarioLogin = :usuarioLogin"),
-    @NamedQuery(name = "Usuarios.findByUsuarioSenha", query = "SELECT u FROM Usuarios u WHERE u.usuarioSenha = :usuarioSenha")})
-public class Usuarios implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Usuarios implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "usuario")
-    private Integer usuario;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "usuario_nome")
     private String usuarioNome;
@@ -65,12 +56,7 @@ public class Usuarios implements Serializable {
     public Usuarios() {
     }
 
-    public Usuarios(Integer usuario) {
-        this.usuario = usuario;
-    }
-
     public Usuarios(Integer usuario, String usuarioNome, String usuarioEmail, String usuarioDocumentoTipo, String usuarioDocumento, String usuarioLogin, String usuarioSenha) {
-        this.usuario = usuario;
         this.usuarioNome = usuarioNome;
         this.usuarioEmail = usuarioEmail;
         this.usuarioDocumentoTipo = usuarioDocumentoTipo;
@@ -79,12 +65,14 @@ public class Usuarios implements Serializable {
         this.usuarioSenha = usuarioSenha;
     }
 
-    public Integer getUsuario() {
-        return usuario;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setUsuario(Integer usuario) {
-        this.usuario = usuario;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getUsuarioNome() {
@@ -178,30 +166,4 @@ public class Usuarios implements Serializable {
     public void setNiveis(Niveis niveis) {
         this.niveis = niveis;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (usuario != null ? usuario.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuarios)) {
-            return false;
-        }
-        Usuarios other = (Usuarios) object;
-        if ((this.usuario == null && other.usuario != null) || (this.usuario != null && !this.usuario.equals(other.usuario))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Usuarios[ usuario=" + usuario + " ]";
-    }
-    
 }

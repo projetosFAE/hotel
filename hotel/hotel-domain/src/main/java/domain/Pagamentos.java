@@ -7,7 +7,6 @@ package domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -16,17 +15,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "pagamentos")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Pagamentos.findAll", query = "SELECT p FROM Pagamentos p"),
-    @NamedQuery(name = "Pagamentos.findByPagamento", query = "SELECT p FROM Pagamentos p WHERE p.pagamento = :pagamento"),
-    @NamedQuery(name = "Pagamentos.findByPagamentoNome", query = "SELECT p FROM Pagamentos p WHERE p.pagamentoNome = :pagamentoNome")})
-public class Pagamentos implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Pagamentos implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "pagamento")
-    private Integer pagamento;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Column(name = "pagamento_nome")
     private String pagamentoNome;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pagamentos")
@@ -35,16 +31,14 @@ public class Pagamentos implements Serializable {
     public Pagamentos() {
     }
 
-    public Pagamentos(Integer pagamento) {
-        this.pagamento = pagamento;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public Integer getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Integer pagamento) {
-        this.pagamento = pagamento;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getPagamentoNome() {
@@ -63,30 +57,4 @@ public class Pagamentos implements Serializable {
     public void setFinanceirosList(List<Financeiros> financeirosList) {
         this.financeirosList = financeirosList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (pagamento != null ? pagamento.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pagamentos)) {
-            return false;
-        }
-        Pagamentos other = (Pagamentos) object;
-        if ((this.pagamento == null && other.pagamento != null) || (this.pagamento != null && !this.pagamento.equals(other.pagamento))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Pagamentos[ pagamento=" + pagamento + " ]";
-    }
-    
 }

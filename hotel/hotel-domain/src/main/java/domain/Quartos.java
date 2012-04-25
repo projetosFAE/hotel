@@ -18,21 +18,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "quartos")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Quartos.findAll", query = "SELECT q FROM Quartos q"),
-    @NamedQuery(name = "Quartos.findByQuarto", query = "SELECT q FROM Quartos q WHERE q.quarto = :quarto"),
-    @NamedQuery(name = "Quartos.findByQuartoNumero", query = "SELECT q FROM Quartos q WHERE q.quartoNumero = :quartoNumero"),
-    @NamedQuery(name = "Quartos.findByQuartoDescricao", query = "SELECT q FROM Quartos q WHERE q.quartoDescricao = :quartoDescricao"),
-    @NamedQuery(name = "Quartos.findByQuartoValor", query = "SELECT q FROM Quartos q WHERE q.quartoValor = :quartoValor"),
-    @NamedQuery(name = "Quartos.findByQuartoReservado", query = "SELECT q FROM Quartos q WHERE q.quartoReservado = :quartoReservado"),
-    @NamedQuery(name = "Quartos.findByQuartoDataCadastro", query = "SELECT q FROM Quartos q WHERE q.quartoDataCadastro = :quartoDataCadastro")})
-public class Quartos implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Quartos implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "quarto")
-    private Integer quarto;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "quarto_numero")
     private String quartoNumero;
@@ -67,24 +60,21 @@ public class Quartos implements Serializable {
     public Quartos() {
     }
 
-    public Quartos(Integer quarto) {
-        this.quarto = quarto;
-    }
-
     public Quartos(Integer quarto, String quartoNumero, BigDecimal quartoValor, boolean quartoReservado, Date quartoDataCadastro) {
-        this.quarto = quarto;
         this.quartoNumero = quartoNumero;
         this.quartoValor = quartoValor;
         this.quartoReservado = quartoReservado;
         this.quartoDataCadastro = quartoDataCadastro;
     }
 
-    public Integer getQuarto() {
-        return quarto;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setQuarto(Integer quarto) {
-        this.quarto = quarto;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getQuartoNumero() {
@@ -178,30 +168,4 @@ public class Quartos implements Serializable {
     public void setPacotesList(List<Pacotes> pacotesList) {
         this.pacotesList = pacotesList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (quarto != null ? quarto.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Quartos)) {
-            return false;
-        }
-        Quartos other = (Quartos) object;
-        if ((this.quarto == null && other.quarto != null) || (this.quarto != null && !this.quarto.equals(other.quarto))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Quartos[ quarto=" + quarto + " ]";
-    }
-    
 }

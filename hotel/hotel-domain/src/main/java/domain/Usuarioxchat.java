@@ -6,7 +6,6 @@ package domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -14,16 +13,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "usuarioxchat")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Usuarioxchat.findAll", query = "SELECT u FROM Usuarioxchat u"),
-    @NamedQuery(name = "Usuarioxchat.findByUsuarioXchat", query = "SELECT u FROM Usuarioxchat u WHERE u.usuarioXchat = :usuarioXchat")})
-public class Usuarioxchat implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Usuarioxchat implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "usuarioXchat")
-    private Integer usuarioXchat;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @JoinColumn(name = "chat", referencedColumnName = "chat")
     @ManyToOne(optional = false)
     private Chat chat;
@@ -34,16 +31,14 @@ public class Usuarioxchat implements Serializable {
     public Usuarioxchat() {
     }
 
-    public Usuarioxchat(Integer usuarioXchat) {
-        this.usuarioXchat = usuarioXchat;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public Integer getUsuarioXchat() {
-        return usuarioXchat;
-    }
-
-    public void setUsuarioXchat(Integer usuarioXchat) {
-        this.usuarioXchat = usuarioXchat;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public Chat getChat() {
@@ -61,30 +56,4 @@ public class Usuarioxchat implements Serializable {
     public void setUsuarios(Usuarios usuarios) {
         this.usuarios = usuarios;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (usuarioXchat != null ? usuarioXchat.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuarioxchat)) {
-            return false;
-        }
-        Usuarioxchat other = (Usuarioxchat) object;
-        if ((this.usuarioXchat == null && other.usuarioXchat != null) || (this.usuarioXchat != null && !this.usuarioXchat.equals(other.usuarioXchat))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Usuarioxchat[ usuarioXchat=" + usuarioXchat + " ]";
-    }
-    
 }

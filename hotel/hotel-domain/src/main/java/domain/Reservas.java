@@ -16,18 +16,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "reservas")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Reservas.findAll", query = "SELECT r FROM Reservas r"),
-    @NamedQuery(name = "Reservas.findByReserva", query = "SELECT r FROM Reservas r WHERE r.reserva = :reserva"),
-    @NamedQuery(name = "Reservas.findByReservaCheckIn", query = "SELECT r FROM Reservas r WHERE r.reservaCheckIn = :reservaCheckIn"),
-    @NamedQuery(name = "Reservas.findByReservaFinalizado", query = "SELECT r FROM Reservas r WHERE r.reservaFinalizado = :reservaFinalizado")})
-public class Reservas implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Reservas implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "reserva")
-    private Integer reserva;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "reserva_check_in")
     private boolean reservaCheckIn;
@@ -45,22 +41,19 @@ public class Reservas implements Serializable {
     public Reservas() {
     }
 
-    public Reservas(Integer reserva) {
-        this.reserva = reserva;
-    }
-
     public Reservas(Integer reserva, boolean reservaCheckIn, boolean reservaFinalizado) {
-        this.reserva = reserva;
         this.reservaCheckIn = reservaCheckIn;
         this.reservaFinalizado = reservaFinalizado;
     }
 
-    public Integer getReserva() {
-        return reserva;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setReserva(Integer reserva) {
-        this.reserva = reserva;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public boolean getReservaCheckIn() {
@@ -104,30 +97,4 @@ public class Reservas implements Serializable {
     public void setFinanceirosList(List<Financeiros> financeirosList) {
         this.financeirosList = financeirosList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (reserva != null ? reserva.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Reservas)) {
-            return false;
-        }
-        Reservas other = (Reservas) object;
-        if ((this.reserva == null && other.reserva != null) || (this.reserva != null && !this.reserva.equals(other.reserva))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Reservas[ reserva=" + reserva + " ]";
-    }
-    
 }

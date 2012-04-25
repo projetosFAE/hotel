@@ -14,19 +14,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "telefones")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Telefones.findAll", query = "SELECT t FROM Telefones t"),
-    @NamedQuery(name = "Telefones.findByTelefone", query = "SELECT t FROM Telefones t WHERE t.telefone = :telefone"),
-    @NamedQuery(name = "Telefones.findByTelefoneDdi", query = "SELECT t FROM Telefones t WHERE t.telefoneDdi = :telefoneDdi"),
-    @NamedQuery(name = "Telefones.findByTelefoneDdd", query = "SELECT t FROM Telefones t WHERE t.telefoneDdd = :telefoneDdd"),
-    @NamedQuery(name = "Telefones.findByTelefoneNumero", query = "SELECT t FROM Telefones t WHERE t.telefoneNumero = :telefoneNumero")})
-public class Telefones implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Telefones implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "telefone")
-    private Integer telefone;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "telefone_ddi")
     private int telefoneDdi;
@@ -46,23 +41,20 @@ public class Telefones implements Serializable {
     public Telefones() {
     }
 
-    public Telefones(Integer telefone) {
-        this.telefone = telefone;
-    }
-
     public Telefones(Integer telefone, int telefoneDdi, int telefoneDdd, int telefoneNumero) {
-        this.telefone = telefone;
         this.telefoneDdi = telefoneDdi;
         this.telefoneDdd = telefoneDdd;
         this.telefoneNumero = telefoneNumero;
     }
 
-    public Integer getTelefone() {
-        return telefone;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setTelefone(Integer telefone) {
-        this.telefone = telefone;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public int getTelefoneDdi() {
@@ -104,30 +96,4 @@ public class Telefones implements Serializable {
     public void setHoteis(Hoteis hoteis) {
         this.hoteis = hoteis;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (telefone != null ? telefone.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Telefones)) {
-            return false;
-        }
-        Telefones other = (Telefones) object;
-        if ((this.telefone == null && other.telefone != null) || (this.telefone != null && !this.telefone.equals(other.telefone))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Telefones[ telefone=" + telefone + " ]";
-    }
-    
 }

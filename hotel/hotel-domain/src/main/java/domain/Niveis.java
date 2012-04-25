@@ -16,17 +16,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "niveis")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Niveis.findAll", query = "SELECT n FROM Niveis n"),
-    @NamedQuery(name = "Niveis.findByNivel", query = "SELECT n FROM Niveis n WHERE n.nivel = :nivel"),
-    @NamedQuery(name = "Niveis.findByNivelNome", query = "SELECT n FROM Niveis n WHERE n.nivelNome = :nivelNome")})
-public class Niveis implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Niveis implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "nivel")
-    private Integer nivel;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "nivel_nome")
     private String nivelNome;
@@ -36,21 +33,18 @@ public class Niveis implements Serializable {
     public Niveis() {
     }
 
-    public Niveis(Integer nivel) {
-        this.nivel = nivel;
-    }
-
     public Niveis(Integer nivel, String nivelNome) {
-        this.nivel = nivel;
         this.nivelNome = nivelNome;
     }
 
-    public Integer getNivel() {
-        return nivel;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setNivel(Integer nivel) {
-        this.nivel = nivel;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getNivelNome() {
@@ -69,30 +63,4 @@ public class Niveis implements Serializable {
     public void setUsuariosList(List<Usuarios> usuariosList) {
         this.usuariosList = usuariosList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (nivel != null ? nivel.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Niveis)) {
-            return false;
-        }
-        Niveis other = (Niveis) object;
-        if ((this.nivel == null && other.nivel != null) || (this.nivel != null && !this.nivel.equals(other.nivel))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Niveis[ nivel=" + nivel + " ]";
-    }
-    
 }

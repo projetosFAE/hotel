@@ -16,18 +16,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "logradouros")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Logradouros.findAll", query = "SELECT l FROM Logradouros l"),
-    @NamedQuery(name = "Logradouros.findByLogradouro", query = "SELECT l FROM Logradouros l WHERE l.logradouro = :logradouro"),
-    @NamedQuery(name = "Logradouros.findByLogradouroNome", query = "SELECT l FROM Logradouros l WHERE l.logradouroNome = :logradouroNome"),
-    @NamedQuery(name = "Logradouros.findByLogradouroNumero", query = "SELECT l FROM Logradouros l WHERE l.logradouroNumero = :logradouroNumero")})
-public class Logradouros implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Logradouros implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "logradouro")
-    private Integer logradouro;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "logradouro_nome")
     private String logradouroNome;
@@ -40,22 +36,19 @@ public class Logradouros implements Serializable {
     public Logradouros() {
     }
 
-    public Logradouros(Integer logradouro) {
-        this.logradouro = logradouro;
-    }
-
     public Logradouros(Integer logradouro, String logradouroNome, String logradouroNumero) {
-        this.logradouro = logradouro;
         this.logradouroNome = logradouroNome;
         this.logradouroNumero = logradouroNumero;
     }
 
-    public Integer getLogradouro() {
-        return logradouro;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setLogradouro(Integer logradouro) {
-        this.logradouro = logradouro;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getLogradouroNome() {
@@ -82,30 +75,4 @@ public class Logradouros implements Serializable {
     public void setCepList(List<Cep> cepList) {
         this.cepList = cepList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (logradouro != null ? logradouro.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Logradouros)) {
-            return false;
-        }
-        Logradouros other = (Logradouros) object;
-        if ((this.logradouro == null && other.logradouro != null) || (this.logradouro != null && !this.logradouro.equals(other.logradouro))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Logradouros[ logradouro=" + logradouro + " ]";
-    }
-    
 }

@@ -18,20 +18,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "servicos")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Servicos.findAll", query = "SELECT s FROM Servicos s"),
-    @NamedQuery(name = "Servicos.findByServico", query = "SELECT s FROM Servicos s WHERE s.servico = :servico"),
-    @NamedQuery(name = "Servicos.findByServicoNome", query = "SELECT s FROM Servicos s WHERE s.servicoNome = :servicoNome"),
-    @NamedQuery(name = "Servicos.findByServicoObservacao", query = "SELECT s FROM Servicos s WHERE s.servicoObservacao = :servicoObservacao"),
-    @NamedQuery(name = "Servicos.findByServicoValor", query = "SELECT s FROM Servicos s WHERE s.servicoValor = :servicoValor"),
-    @NamedQuery(name = "Servicos.findByServicoDataCadastro", query = "SELECT s FROM Servicos s WHERE s.servicoDataCadastro = :servicoDataCadastro")})
-public class Servicos implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Servicos implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "servico")
-    private Integer servico;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "servico_nome")
     private String servicoNome;
@@ -55,22 +49,19 @@ public class Servicos implements Serializable {
     public Servicos() {
     }
 
-    public Servicos(Integer servico) {
-        this.servico = servico;
-    }
-
     public Servicos(Integer servico, String servicoNome, BigDecimal servicoValor) {
-        this.servico = servico;
         this.servicoNome = servicoNome;
         this.servicoValor = servicoValor;
     }
 
-    public Integer getServico() {
-        return servico;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setServico(Integer servico) {
-        this.servico = servico;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getServicoNome() {
@@ -130,30 +121,4 @@ public class Servicos implements Serializable {
     public void setHoteis(Hoteis hoteis) {
         this.hoteis = hoteis;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (servico != null ? servico.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Servicos)) {
-            return false;
-        }
-        Servicos other = (Servicos) object;
-        if ((this.servico == null && other.servico != null) || (this.servico != null && !this.servico.equals(other.servico))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Servicos[ servico=" + servico + " ]";
-    }
-    
 }

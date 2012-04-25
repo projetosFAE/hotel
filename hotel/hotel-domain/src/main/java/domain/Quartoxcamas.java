@@ -14,16 +14,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "quartoxcamas")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Quartoxcamas.findAll", query = "SELECT q FROM Quartoxcamas q"),
-    @NamedQuery(name = "Quartoxcamas.findByQuartoXcama", query = "SELECT q FROM Quartoxcamas q WHERE q.quartoXcama = :quartoXcama")})
-public class Quartoxcamas implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Quartoxcamas implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "quartoXcama")
-    private String quartoXcama;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @JoinColumn(name = "quarto", referencedColumnName = "quarto")
     @ManyToOne(optional = false)
     private Quartos quartos;
@@ -34,16 +32,14 @@ public class Quartoxcamas implements Serializable {
     public Quartoxcamas() {
     }
 
-    public Quartoxcamas(String quartoXcama) {
-        this.quartoXcama = quartoXcama;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public String getQuartoXcama() {
-        return quartoXcama;
-    }
-
-    public void setQuartoXcama(String quartoXcama) {
-        this.quartoXcama = quartoXcama;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public Quartos getQuartos() {
@@ -61,30 +57,4 @@ public class Quartoxcamas implements Serializable {
     public void setCamas(Camas camas) {
         this.camas = camas;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (quartoXcama != null ? quartoXcama.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Quartoxcamas)) {
-            return false;
-        }
-        Quartoxcamas other = (Quartoxcamas) object;
-        if ((this.quartoXcama == null && other.quartoXcama != null) || (this.quartoXcama != null && !this.quartoXcama.equals(other.quartoXcama))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Quartoxcamas[ quartoXcama=" + quartoXcama + " ]";
-    }
-    
 }

@@ -7,7 +7,6 @@ package domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -15,19 +14,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "itens_reservas")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ItensReservas.findAll", query = "SELECT i FROM ItensReservas i"),
-    @NamedQuery(name = "ItensReservas.findByItensReserva", query = "SELECT i FROM ItensReservas i WHERE i.itensReserva = :itensReserva"),
-    @NamedQuery(name = "ItensReservas.findByItensReservaDataCadastro", query = "SELECT i FROM ItensReservas i WHERE i.itensReservaDataCadastro = :itensReservaDataCadastro"),
-    @NamedQuery(name = "ItensReservas.findByItensDataInicial", query = "SELECT i FROM ItensReservas i WHERE i.itensDataInicial = :itensDataInicial"),
-    @NamedQuery(name = "ItensReservas.findByItensDataFinal", query = "SELECT i FROM ItensReservas i WHERE i.itensDataFinal = :itensDataFinal")})
-public class ItensReservas implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class ItensReservas implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "itens_reserva")
-    private Integer itensReserva;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "itens_reserva_data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
@@ -62,23 +56,20 @@ public class ItensReservas implements Serializable {
     public ItensReservas() {
     }
 
-    public ItensReservas(Integer itensReserva) {
-        this.itensReserva = itensReserva;
-    }
-
     public ItensReservas(Integer itensReserva, Date itensReservaDataCadastro, Date itensDataInicial, Date itensDataFinal) {
-        this.itensReserva = itensReserva;
         this.itensReservaDataCadastro = itensReservaDataCadastro;
         this.itensDataInicial = itensDataInicial;
         this.itensDataFinal = itensDataFinal;
     }
 
-    public Integer getItensReserva() {
-        return itensReserva;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setItensReserva(Integer itensReserva) {
-        this.itensReserva = itensReserva;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public Date getItensReservaDataCadastro() {
@@ -152,30 +143,4 @@ public class ItensReservas implements Serializable {
     public void setQuartos(Quartos quartos) {
         this.quartos = quartos;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (itensReserva != null ? itensReserva.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ItensReservas)) {
-            return false;
-        }
-        ItensReservas other = (ItensReservas) object;
-        if ((this.itensReserva == null && other.itensReserva != null) || (this.itensReserva != null && !this.itensReserva.equals(other.itensReserva))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.ItensReservas[ itensReserva=" + itensReserva + " ]";
-    }
-    
 }

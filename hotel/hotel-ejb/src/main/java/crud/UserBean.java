@@ -6,8 +6,8 @@ package crud;
 import domain.Persistent;
 import java.io.Serializable;
 import java.util.List;
-//import javax.ejb.Stateless;
-//import javax.enterprise.context.Dependent;
+import javax.ejb.Stateless;
+import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -16,13 +16,12 @@ import javax.persistence.Query;
  *
  * @author rodrigo
  */
-//@Stateless
-//@Dependent
+@Stateless
+@Dependent
 public class UserBean implements User, Serializable {
-    
-    @PersistenceContext
+
     EntityManager emanager;
-    
+
     @Override
     public <P extends Persistent, K extends Serializable> P find(
             Class<P> clazz, K key) {
@@ -84,5 +83,4 @@ public class UserBean implements User, Serializable {
     public EntityManager getEntityManager() {
         return emanager;
     }
-
 }

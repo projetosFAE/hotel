@@ -7,7 +7,6 @@ package domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -16,17 +15,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "paises")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Paises.findAll", query = "SELECT p FROM Paises p"),
-    @NamedQuery(name = "Paises.findByPais", query = "SELECT p FROM Paises p WHERE p.pais = :pais"),
-    @NamedQuery(name = "Paises.findByPaisNome", query = "SELECT p FROM Paises p WHERE p.paisNome = :paisNome")})
-public class Paises implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Paises implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "pais")
-    private Integer pais;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "pais_nome")
     private String paisNome;
@@ -36,21 +32,18 @@ public class Paises implements Serializable {
     public Paises() {
     }
 
-    public Paises(Integer pais) {
-        this.pais = pais;
-    }
-
     public Paises(Integer pais, String paisNome) {
-        this.pais = pais;
         this.paisNome = paisNome;
     }
 
-    public Integer getPais() {
-        return pais;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setPais(Integer pais) {
-        this.pais = pais;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getPaisNome() {
@@ -69,30 +62,4 @@ public class Paises implements Serializable {
     public void setEstadosList(List<Estados> estadosList) {
         this.estadosList = estadosList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (pais != null ? pais.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Paises)) {
-            return false;
-        }
-        Paises other = (Paises) object;
-        if ((this.pais == null && other.pais != null) || (this.pais != null && !this.pais.equals(other.pais))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Paises[ pais=" + pais + " ]";
-    }
-    
 }

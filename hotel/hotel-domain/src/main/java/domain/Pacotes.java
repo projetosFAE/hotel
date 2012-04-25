@@ -18,22 +18,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "pacotes")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Pacotes.findAll", query = "SELECT p FROM Pacotes p"),
-    @NamedQuery(name = "Pacotes.findByPacote", query = "SELECT p FROM Pacotes p WHERE p.pacote = :pacote"),
-    @NamedQuery(name = "Pacotes.findByPacoteNome", query = "SELECT p FROM Pacotes p WHERE p.pacoteNome = :pacoteNome"),
-    @NamedQuery(name = "Pacotes.findByPacoteDataInicial", query = "SELECT p FROM Pacotes p WHERE p.pacoteDataInicial = :pacoteDataInicial"),
-    @NamedQuery(name = "Pacotes.findByPacoteDataFinal", query = "SELECT p FROM Pacotes p WHERE p.pacoteDataFinal = :pacoteDataFinal"),
-    @NamedQuery(name = "Pacotes.findByPacotePessoas", query = "SELECT p FROM Pacotes p WHERE p.pacotePessoas = :pacotePessoas"),
-    @NamedQuery(name = "Pacotes.findByPacoteDesc", query = "SELECT p FROM Pacotes p WHERE p.pacoteDesc = :pacoteDesc"),
-    @NamedQuery(name = "Pacotes.findByPacoteDataCadastro", query = "SELECT p FROM Pacotes p WHERE p.pacoteDataCadastro = :pacoteDataCadastro")})
-public class Pacotes implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Pacotes implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "pacote")
-    private Integer pacote;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "pacote_nome")
     private String pacoteNome;
@@ -73,12 +65,7 @@ public class Pacotes implements Serializable {
     public Pacotes() {
     }
 
-    public Pacotes(Integer pacote) {
-        this.pacote = pacote;
-    }
-
     public Pacotes(Integer pacote, String pacoteNome, Date pacoteDataInicial, Date pacoteDataFinal, int pacotePessoas, BigDecimal pacoteDesc) {
-        this.pacote = pacote;
         this.pacoteNome = pacoteNome;
         this.pacoteDataInicial = pacoteDataInicial;
         this.pacoteDataFinal = pacoteDataFinal;
@@ -86,12 +73,14 @@ public class Pacotes implements Serializable {
         this.pacoteDesc = pacoteDesc;
     }
 
-    public Integer getPacote() {
-        return pacote;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setPacote(Integer pacote) {
-        this.pacote = pacote;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getPacoteNome() {
@@ -182,30 +171,4 @@ public class Pacotes implements Serializable {
     public void setQuartos(Quartos quartos) {
         this.quartos = quartos;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (pacote != null ? pacote.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pacotes)) {
-            return false;
-        }
-        Pacotes other = (Pacotes) object;
-        if ((this.pacote == null && other.pacote != null) || (this.pacote != null && !this.pacote.equals(other.pacote))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Pacotes[ pacote=" + pacote + " ]";
-    }
-    
 }
