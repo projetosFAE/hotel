@@ -1,16 +1,16 @@
 /**
  * User.java
  */
-package br.com.cmd.ejb.crud;
+package crud;
 
-import com.hotel.model.domain.Persistent;
+import domain.Persistent;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
  * 
- * @author rodrigo.h
+ * @author AlexPorto
  */
 public interface User extends Serializable {
     

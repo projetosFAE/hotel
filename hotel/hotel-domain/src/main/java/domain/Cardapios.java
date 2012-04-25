@@ -18,22 +18,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "cardapios")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Cardapios.findAll", query = "SELECT c FROM Cardapios c"),
-    @NamedQuery(name = "Cardapios.findByCardapio", query = "SELECT c FROM Cardapios c WHERE c.cardapio = :cardapio"),
-    @NamedQuery(name = "Cardapios.findByCardapioNome", query = "SELECT c FROM Cardapios c WHERE c.cardapioNome = :cardapioNome"),
-    @NamedQuery(name = "Cardapios.findByCardapioTempo", query = "SELECT c FROM Cardapios c WHERE c.cardapioTempo = :cardapioTempo"),
-    @NamedQuery(name = "Cardapios.findByCardapioObservacao", query = "SELECT c FROM Cardapios c WHERE c.cardapioObservacao = :cardapioObservacao"),
-    @NamedQuery(name = "Cardapios.findByCardapioValorCalorico", query = "SELECT c FROM Cardapios c WHERE c.cardapioValorCalorico = :cardapioValorCalorico"),
-    @NamedQuery(name = "Cardapios.findByCardapioValor", query = "SELECT c FROM Cardapios c WHERE c.cardapioValor = :cardapioValor"),
-    @NamedQuery(name = "Cardapios.findByCardapioDataCadastro", query = "SELECT c FROM Cardapios c WHERE c.cardapioDataCadastro = :cardapioDataCadastro")})
-public class Cardapios implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Cardapios implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "cardapio")
-    private Integer cardapio;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "cardapio_nome")
     private String cardapioNome;
@@ -67,24 +59,21 @@ public class Cardapios implements Serializable {
     public Cardapios() {
     }
 
-    public Cardapios(Integer cardapio) {
-        this.cardapio = cardapio;
-    }
-
     public Cardapios(Integer cardapio, String cardapioNome, Date cardapioTempo, BigDecimal cardapioValor, Date cardapioDataCadastro) {
-        this.cardapio = cardapio;
         this.cardapioNome = cardapioNome;
         this.cardapioTempo = cardapioTempo;
         this.cardapioValor = cardapioValor;
         this.cardapioDataCadastro = cardapioDataCadastro;
     }
 
-    public Integer getCardapio() {
-        return cardapio;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setCardapio(Integer cardapio) {
-        this.cardapio = cardapio;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getCardapioNome() {
@@ -168,30 +157,4 @@ public class Cardapios implements Serializable {
     public void setPacotesList(List<Pacotes> pacotesList) {
         this.pacotesList = pacotesList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (cardapio != null ? cardapio.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cardapios)) {
-            return false;
-        }
-        Cardapios other = (Cardapios) object;
-        if ((this.cardapio == null && other.cardapio != null) || (this.cardapio != null && !this.cardapio.equals(other.cardapio))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Cardapios[ cardapio=" + cardapio + " ]";
-    }
-    
 }

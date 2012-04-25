@@ -1,4 +1,4 @@
-package br.com.cmd.ejb.service.basic;
+package service.basic;
 
 import java.util.List;
 import javax.persistence.Query;

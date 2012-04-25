@@ -1,13 +1,13 @@
 /**
  * UserBean.java
  */
-package br.com.cmd.ejb.crud;
+package crud;
 
-import com.mycompany.customerdomain.Persistent;
+import domain.Persistent;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.Stateless;
-import javax.enterprise.context.Dependent;
+//import javax.ejb.Stateless;
+//import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -16,8 +16,8 @@ import javax.persistence.Query;
  *
  * @author rodrigo
  */
-@Stateless
-@Dependent
+//@Stateless
+//@Dependent
 public class UserBean implements User, Serializable {
     
     @PersistenceContext

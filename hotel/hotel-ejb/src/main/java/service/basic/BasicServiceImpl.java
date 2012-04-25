@@ -1,6 +1,5 @@
-package br.com.cmd.ejb.service.basic;
+package service.basic;
 
-import br.com.cmd.hotel.;
 import java.util.List;
 import javax.persistence.Query;
 

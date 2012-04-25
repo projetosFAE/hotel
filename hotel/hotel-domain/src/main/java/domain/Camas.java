@@ -7,7 +7,6 @@ package domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -16,17 +15,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "camas")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Camas.findAll", query = "SELECT c FROM Camas c"),
-    @NamedQuery(name = "Camas.findByCama", query = "SELECT c FROM Camas c WHERE c.cama = :cama"),
-    @NamedQuery(name = "Camas.findByCamaNome", query = "SELECT c FROM Camas c WHERE c.camaNome = :camaNome")})
-public class Camas implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Camas implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "cama")
-    private Integer cama;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "cama_nome")
     private String camaNome;
@@ -36,23 +32,16 @@ public class Camas implements Serializable {
     public Camas() {
     }
 
-    public Camas(Integer cama) {
-        this.cama = cama;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public Camas(Integer cama, String camaNome) {
-        this.cama = cama;
-        this.camaNome = camaNome;
+    @Override
+    public Long getId() {
+       return this.id;
     }
-
-    public Integer getCama() {
-        return cama;
-    }
-
-    public void setCama(Integer cama) {
-        this.cama = cama;
-    }
-
+    
     public String getCamaNome() {
         return camaNome;
     }
@@ -69,30 +58,4 @@ public class Camas implements Serializable {
     public void setQuartoxcamasList(List<Quartoxcamas> quartoxcamasList) {
         this.quartoxcamasList = quartoxcamasList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (cama != null ? cama.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Camas)) {
-            return false;
-        }
-        Camas other = (Camas) object;
-        if ((this.cama == null && other.cama != null) || (this.cama != null && !this.cama.equals(other.cama))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Camas[ cama=" + cama + " ]";
-    }
-    
 }

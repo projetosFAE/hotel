@@ -7,7 +7,6 @@ package domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -16,17 +15,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "estados")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Estados.findAll", query = "SELECT e FROM Estados e"),
-    @NamedQuery(name = "Estados.findByEstado", query = "SELECT e FROM Estados e WHERE e.estado = :estado"),
-    @NamedQuery(name = "Estados.findByEstadoUF", query = "SELECT e FROM Estados e WHERE e.estadoUF = :estadoUF")})
-public class Estados implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Estados implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "estado")
-    private Integer estado;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "estado_UF")
     private String estadoUF;
@@ -39,21 +35,18 @@ public class Estados implements Serializable {
     public Estados() {
     }
 
-    public Estados(Integer estado) {
-        this.estado = estado;
-    }
-
-    public Estados(Integer estado, String estadoUF) {
-        this.estado = estado;
+    public Estados(String estadoUF) {
         this.estadoUF = estadoUF;
     }
 
-    public Integer getEstado() {
-        return estado;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public void setEstado(Integer estado) {
-        this.estado = estado;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getEstadoUF() {
@@ -80,30 +73,4 @@ public class Estados implements Serializable {
     public void setCidadesList(List<Cidades> cidadesList) {
         this.cidadesList = cidadesList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (estado != null ? estado.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Estados)) {
-            return false;
-        }
-        Estados other = (Estados) object;
-        if ((this.estado == null && other.estado != null) || (this.estado != null && !this.estado.equals(other.estado))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Estados[ estado=" + estado + " ]";
-    }
-    
 }

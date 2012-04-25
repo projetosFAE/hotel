@@ -2,37 +2,39 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="br.com.cmd_hotel-domain_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>domain.TiposQuartos</class>
-    <class>domain.Quartos</class>
-    <class>domain.Logradouroxusuario</class>
-    <class>domain.Cidades</class>
-    <class>domain.Ramais</class>
-    <class>domain.Hoteis</class>
-    <class>domain.Usuarioxchat</class>
-    <class>domain.Logradouros</class>
-    <class>domain.Cep</class>
-    <class>domain.Financeiros</class>
-    <class>domain.Chat</class>
-    <class>domain.Cardapios</class>
-    <class>domain.Pagamentos</class>
-    <class>domain.ItensReservas</class>
-    <class>domain.Estados</class>
-    <class>domain.Telefones</class>
-    <class>domain.Servicos</class>
-    <class>domain.Usuarios</class>
-    <class>domain.Camas</class>
-    <class>domain.Paises</class>
-    <class>domain.Cardapiotipos</class>
-    <class>domain.Pacotes</class>
     <class>domain.Ambientes</class>
+    <class>domain.Camas</class>
+    <class>domain.Cardapios</class>
+    <class>domain.Cardapiotipos</class>
+    <class>domain.Cep</class>
+    <class>domain.Chat</class>
+    <class>domain.Cidades</class>
+    <class>domain.Estados</class>
+    <class>domain.Financeiros</class>
+    <class>domain.Hoteis</class>
+    <class>domain.ItensReservas</class>
+    <class>domain.Logradouros</class>
+    <class>domain.Logradouroxusuario</class>
     <class>domain.Niveis</class>
+    <class>domain.Pacotes</class>
+    <class>domain.Pagamentos</class>
+    <class>domain.Paises</class>
+    <class>domain.Quartos</class>
     <class>domain.Quartoxcamas</class>
+    <class>domain.Ramais</class>
     <class>domain.Reservas</class>
+    <class>domain.Servicos</class>
+    <class>domain.Telefones</class>
+    <class>domain.TiposQuartos</class>
+    <class>domain.Usuarios</class>
+    <class>domain.Usuarioxchat</class>
+    <shared-cache-mode>ALL</shared-cache-mode>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hotel_v1"/>
       <property name="javax.persistence.jdbc.password" value="porto90"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
     </properties>
   </persistence-unit>
 </persistence>

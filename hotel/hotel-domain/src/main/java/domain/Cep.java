@@ -17,15 +17,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "cep")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Cep.findAll", query = "SELECT c FROM Cep c"),
-    @NamedQuery(name = "Cep.findByCep", query = "SELECT c FROM Cep c WHERE c.cep = :cep")})
-public class Cep implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Cep implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "cep")
-    private Integer cep;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @JoinColumn(name = "logradouro", referencedColumnName = "logradouro")
     @ManyToOne(optional = false)
     private Logradouros logradouros;
@@ -38,16 +37,14 @@ public class Cep implements Serializable {
     public Cep() {
     }
 
-    public Cep(Integer cep) {
-        this.cep = cep;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public Integer getCep() {
-        return cep;
-    }
-
-    public void setCep(Integer cep) {
-        this.cep = cep;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public Logradouros getLogradouros() {
@@ -74,30 +71,5 @@ public class Cep implements Serializable {
     public void setLogradouroxusuarioList(List<Logradouroxusuario> logradouroxusuarioList) {
         this.logradouroxusuarioList = logradouroxusuarioList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (cep != null ? cep.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cep)) {
-            return false;
-        }
-        Cep other = (Cep) object;
-        if ((this.cep == null && other.cep != null) || (this.cep != null && !this.cep.equals(other.cep))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Cep[ cep=" + cep + " ]";
-    }
-    
+  
 }

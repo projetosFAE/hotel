@@ -7,7 +7,6 @@ package domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -16,17 +15,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "cidades")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Cidades.findAll", query = "SELECT c FROM Cidades c"),
-    @NamedQuery(name = "Cidades.findByCidade", query = "SELECT c FROM Cidades c WHERE c.cidade = :cidade"),
-    @NamedQuery(name = "Cidades.findByCidadeNome", query = "SELECT c FROM Cidades c WHERE c.cidadeNome = :cidadeNome")})
-public class Cidades implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Cidades implements Persistent, Serializable {
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "cidade")
-    private Integer cidade;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "requester-sequence")
+    @SequenceGenerator(name = "requester-sequence",
+    sequenceName = "requester_seq")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "cidade_nome")
     private String cidadeNome;
@@ -39,21 +35,14 @@ public class Cidades implements Serializable {
     public Cidades() {
     }
 
-    public Cidades(Integer cidade) {
-        this.cidade = cidade;
+    @Override
+    public void setId(Serializable id) {
+        this.id = (Long) id;
     }
 
-    public Cidades(Integer cidade, String cidadeNome) {
-        this.cidade = cidade;
-        this.cidadeNome = cidadeNome;
-    }
-
-    public Integer getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(Integer cidade) {
-        this.cidade = cidade;
+    @Override
+    public Long getId() {
+       return this.id;
     }
 
     public String getCidadeNome() {
@@ -80,30 +69,4 @@ public class Cidades implements Serializable {
     public void setEstados(Estados estados) {
         this.estados = estados;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (cidade != null ? cidade.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cidades)) {
-            return false;
-        }
-        Cidades other = (Cidades) object;
-        if ((this.cidade == null && other.cidade != null) || (this.cidade != null && !this.cidade.equals(other.cidade))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Cidades[ cidade=" + cidade + " ]";
-    }
-    
 }
