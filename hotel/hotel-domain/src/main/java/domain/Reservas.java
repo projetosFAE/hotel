@@ -20,9 +20,9 @@ public class Reservas implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "reservas-sequence")
+    @SequenceGenerator(name = "reservas-sequence",
+    sequenceName = "reservas_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "reserva_check_in")

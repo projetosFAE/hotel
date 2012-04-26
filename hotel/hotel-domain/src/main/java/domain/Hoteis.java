@@ -20,9 +20,9 @@ public class Hoteis implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "hoteis-sequence")
+    @SequenceGenerator(name = "hoteis-sequence",
+    sequenceName = "hoteis_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "hotel_nome")

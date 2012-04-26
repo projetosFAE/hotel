@@ -19,9 +19,9 @@ public class Financeiros implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "financeiros-sequence")
+    @SequenceGenerator(name = "financeiros-sequence",
+    sequenceName = "financeiros_seq")
     private Long id;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)

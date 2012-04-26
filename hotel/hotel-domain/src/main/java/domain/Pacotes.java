@@ -22,9 +22,9 @@ public class Pacotes implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "pacotes-sequence")
+    @SequenceGenerator(name = "pacotes-sequence",
+    sequenceName = "pacotes_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "pacote_nome")

@@ -18,9 +18,9 @@ public class Ramais implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "ramais-sequence")
+    @SequenceGenerator(name = "ramais-sequence",
+    sequenceName = "ramais_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "ramal_numero")

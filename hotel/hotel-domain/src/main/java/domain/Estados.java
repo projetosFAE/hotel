@@ -19,9 +19,9 @@ public class Estados implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "estados-sequence")
+    @SequenceGenerator(name = "estados-sequence",
+    sequenceName = "estados_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "estado_UF")

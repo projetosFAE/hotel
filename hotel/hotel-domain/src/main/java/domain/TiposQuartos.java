@@ -20,9 +20,9 @@ public class TiposQuartos implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "tipos_quartos-sequence")
+    @SequenceGenerator(name = "tipos_quartos-sequence",
+    sequenceName = "tipos_quartos_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "quartos_descricao")

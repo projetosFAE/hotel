@@ -20,9 +20,9 @@ public class Niveis implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "niveis-sequence")
+    @SequenceGenerator(name = "niveis-sequence",
+    sequenceName = "niveis_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "nivel_nome")

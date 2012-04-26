@@ -19,9 +19,9 @@ public class Cardapiotipos implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "cardapiotipos-sequence")
+    @SequenceGenerator(name = "cardapiotipos-sequence",
+    sequenceName = "cardapiotipos_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "cardapioTipo_nome")

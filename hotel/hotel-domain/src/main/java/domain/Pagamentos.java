@@ -19,9 +19,9 @@ public class Pagamentos implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "pagamentos-sequence")
+    @SequenceGenerator(name = "pagamentos-sequence",
+    sequenceName = "pagamentos_seq")
     private Long id;
     @Column(name = "pagamento_nome")
     private String pagamentoNome;

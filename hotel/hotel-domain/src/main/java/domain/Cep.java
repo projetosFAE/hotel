@@ -21,9 +21,9 @@ public class Cep implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "cep-sequence")
+    @SequenceGenerator(name = "cep-sequence",
+    sequenceName = "cep_seq")
     private Long id;
     @JoinColumn(name = "logradouro", referencedColumnName = "logradouro")
     @ManyToOne(optional = false)

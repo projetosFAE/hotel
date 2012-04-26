@@ -22,9 +22,9 @@ public class Servicos implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "servicos-sequence")
+    @SequenceGenerator(name = "servicos-sequence",
+    sequenceName = "servicos_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "servico_nome")

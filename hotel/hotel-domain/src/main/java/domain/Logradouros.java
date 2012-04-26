@@ -20,9 +20,9 @@ public class Logradouros implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "logradouros-sequence")
+    @SequenceGenerator(name = "logradouros-sequence",
+    sequenceName = "logradouros_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "logradouro_nome")

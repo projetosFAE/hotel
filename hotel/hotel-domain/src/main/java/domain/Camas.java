@@ -19,9 +19,9 @@ public class Camas implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "camas-sequence")
+    @SequenceGenerator(name = "camas-sequence",
+    sequenceName = "camas_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "cama_nome")

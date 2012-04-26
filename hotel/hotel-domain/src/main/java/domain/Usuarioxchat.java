@@ -17,9 +17,9 @@ public class Usuarioxchat implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "usuarioxchat-sequence")
+    @SequenceGenerator(name = "usuarioxchat-sequence",
+    sequenceName = "usuarioxchat_seq")
     private Long id;
     @JoinColumn(name = "chat", referencedColumnName = "chat")
     @ManyToOne(optional = false)

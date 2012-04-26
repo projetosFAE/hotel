@@ -17,9 +17,9 @@ public class Logradouroxusuario implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "logradouroxusuario-sequence")
+    @SequenceGenerator(name = "logradouroxusuario-sequence",
+    sequenceName = "logradouroxusuario_seq")
     private Long id;
     @JoinColumn(name = "hotel", referencedColumnName = "hotel")
     @ManyToOne(optional = false)

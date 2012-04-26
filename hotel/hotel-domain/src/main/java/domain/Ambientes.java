@@ -21,9 +21,9 @@ public class Ambientes implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "ambientes-sequence")
+    @SequenceGenerator(name = "ambientes-sequence",
+    sequenceName = "ambientes_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "ambiente_nome")

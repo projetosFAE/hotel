@@ -5,6 +5,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
@@ -19,9 +20,9 @@ public class Usuarios implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "usuarios-sequence")
+    @SequenceGenerator(name = "usuarios-sequence",
+    sequenceName = "usuarios_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "usuario_nome")
@@ -52,6 +53,9 @@ public class Usuarios implements Persistent, Serializable {
     @JoinColumn(name = "nivel", referencedColumnName = "nivel")
     @ManyToOne(optional = false)
     private Niveis niveis;
+    @Column(name = "usuario_data_registro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuarioDataRegistro;
 
     public Usuarios() {
     }
@@ -166,4 +170,12 @@ public class Usuarios implements Persistent, Serializable {
     public void setNiveis(Niveis niveis) {
         this.niveis = niveis;
     }
+
+    public Date getUsuarioDataRegistro() {
+        return usuarioDataRegistro;
+    }
+
+    public void setUsuarioDataRegistro(Date usuarioDataRegistro) {
+        this.usuarioDataRegistro = usuarioDataRegistro;
+    }    
 }

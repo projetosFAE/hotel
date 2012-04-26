@@ -18,9 +18,9 @@ public class Quartoxcamas implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "quartoxcamas-sequence")
+    @SequenceGenerator(name = "quartoxcamas-sequence",
+    sequenceName = "quartoxcamas_seq")
     private Long id;
     @JoinColumn(name = "quarto", referencedColumnName = "quarto")
     @ManyToOne(optional = false)

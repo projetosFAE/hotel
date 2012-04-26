@@ -18,9 +18,9 @@ public class ItensReservas implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "itens_reservas-sequence")
+    @SequenceGenerator(name = "itens_reservas-sequence",
+    sequenceName = "itens_reservas_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "itens_reserva_data_cadastro")

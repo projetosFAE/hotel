@@ -19,9 +19,9 @@ public class Paises implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "paises-sequence")
+    @SequenceGenerator(name = "paises-sequence",
+    sequenceName = "paises_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "pais_nome")

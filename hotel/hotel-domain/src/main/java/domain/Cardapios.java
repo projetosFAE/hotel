@@ -22,9 +22,9 @@ public class Cardapios implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "cardapios-sequence")
+    @SequenceGenerator(name = "cardapios-sequence",
+    sequenceName = "cardapios_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "cardapio_nome")

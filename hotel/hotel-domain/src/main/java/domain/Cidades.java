@@ -19,9 +19,9 @@ public class Cidades implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "cidades-sequence")
+    @SequenceGenerator(name = "cidades-sequence",
+    sequenceName = "cidades_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "cidade_nome")

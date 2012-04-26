@@ -19,9 +19,9 @@ public class Chat implements Persistent, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "requester-sequence")
-    @SequenceGenerator(name = "requester-sequence",
-    sequenceName = "requester_seq")
+    generator = "chat-sequence")
+    @SequenceGenerator(name = "chat-sequence",
+    sequenceName = "chat_seq")
     private Long id;
     @Basic(optional = false)
     @Column(name = "chat_conversa")
