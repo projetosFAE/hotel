@@ -49,16 +49,16 @@ public class Pacotes implements Persistent, Serializable {
     private Date pacoteDataCadastro;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacotes")
     private List<ItensReservas> itensReservasList;
-    @JoinColumn(name = "servico", referencedColumnName = "servico")
+    @JoinColumn(name = "servico", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Servicos servicos;
-    @JoinColumn(name = "ambiente", referencedColumnName = "ambiente")
+    @JoinColumn(name = "ambiente", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Ambientes ambientes;
-    @JoinColumn(name = "cardapio", referencedColumnName = "cardapio")
+    @JoinColumn(name = "cardapio", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Cardapios cardapios;
-    @JoinColumn(name = "quarto", referencedColumnName = "quarto")
+    @JoinColumn(name = "quarto", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Quartos quartos;
 

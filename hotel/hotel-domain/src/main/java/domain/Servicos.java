@@ -42,7 +42,7 @@ public class Servicos implements Persistent, Serializable {
     private List<ItensReservas> itensReservasList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicos")
     private List<Pacotes> pacotesList;
-    @JoinColumn(name = "hotel", referencedColumnName = "hotel")
+    @JoinColumn(name = "hoteis", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Hoteis hoteis;
 

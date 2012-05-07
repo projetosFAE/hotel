@@ -45,10 +45,10 @@ public class Cardapios implements Persistent, Serializable {
     @Column(name = "cardapio_data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date cardapioDataCadastro;
-    @JoinColumn(name = "cardapioTipo", referencedColumnName = "cardapioTipo")
+    @JoinColumn(name = "cardapioTipos", referencedColumnName = "cardapioTipos")
     @ManyToOne(optional = false)
     private Cardapiotipos cardapiotipos;
-    @JoinColumn(name = "hotel", referencedColumnName = "hotel")
+    @JoinColumn(name = "hoteis", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Hoteis hoteis;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardapios")

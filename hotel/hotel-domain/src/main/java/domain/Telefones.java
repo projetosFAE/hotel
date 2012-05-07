@@ -31,10 +31,10 @@ public class Telefones implements Persistent, Serializable {
     @Basic(optional = false)
     @Column(name = "telefone_numero")
     private int telefoneNumero;
-    @JoinColumn(name = "usuario", referencedColumnName = "usuario")
+    @JoinColumn(name = "usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios usuarios;
-    @JoinColumn(name = "hotel", referencedColumnName = "hotel")
+    @JoinColumn(name = "hoteis", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Hoteis hoteis;
 

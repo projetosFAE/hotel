@@ -41,7 +41,7 @@ public class Ambientes implements Persistent, Serializable {
     @Column(name = "ambiente_data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ambienteDataCadastro;
-    @JoinColumn(name = "hotel", referencedColumnName = "hotel")
+    @JoinColumn(name = "hoteis", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Hoteis hoteis;
     @OneToMany(mappedBy = "ambientes")

@@ -34,22 +34,22 @@ public class ItensReservas implements Persistent, Serializable {
     @Column(name = "itens_data_final")
     @Temporal(TemporalType.TIMESTAMP)
     private Date itensDataFinal;
-    @JoinColumn(name = "pacote", referencedColumnName = "pacote")
+    @JoinColumn(name = "pacote", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pacotes pacotes;
-    @JoinColumn(name = "reserva", referencedColumnName = "reserva")
+    @JoinColumn(name = "reserva", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Reservas reservas;
-    @JoinColumn(name = "servico", referencedColumnName = "servico")
+    @JoinColumn(name = "servico", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Servicos servicos;
-    @JoinColumn(name = "ambiente", referencedColumnName = "ambiente")
+    @JoinColumn(name = "ambiente", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Ambientes ambientes;
-    @JoinColumn(name = "cardapio", referencedColumnName = "cardapio")
+    @JoinColumn(name = "cardapio", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Cardapios cardapios;
-    @JoinColumn(name = "quarto", referencedColumnName = "quarto")
+    @JoinColumn(name = "quarto", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Quartos quartos;
 

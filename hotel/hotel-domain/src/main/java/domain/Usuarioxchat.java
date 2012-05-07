@@ -21,10 +21,10 @@ public class Usuarioxchat implements Persistent, Serializable {
     @SequenceGenerator(name = "usuarioxchat-sequence",
     sequenceName = "usuarioxchat_seq")
     private Long id;
-    @JoinColumn(name = "chat", referencedColumnName = "chat")
+    @JoinColumn(name = "chat", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Chat chat;
-    @JoinColumn(name = "usuario", referencedColumnName = "usuario")
+    @JoinColumn(name = "usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios usuarios;
 

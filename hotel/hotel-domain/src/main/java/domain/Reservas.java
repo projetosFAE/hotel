@@ -30,7 +30,7 @@ public class Reservas implements Persistent, Serializable {
     @Basic(optional = false)
     @Column(name = "reserva_finalizado")
     private boolean reservaFinalizado;
-    @JoinColumn(name = "usuario", referencedColumnName = "usuario")
+    @JoinColumn(name = "usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios usuarios;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reservas")

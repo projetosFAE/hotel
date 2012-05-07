@@ -48,10 +48,10 @@ public class Quartos implements Persistent, Serializable {
     private List<Quartoxcamas> quartoxcamasList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "quartos")
     private List<ItensReservas> itensReservasList;
-    @JoinColumn(name = "tipos_quarto", referencedColumnName = "tipos_quartos")
+    @JoinColumn(name = "tipos_quarto", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private TiposQuartos tiposQuartos;
-    @JoinColumn(name = "hotel", referencedColumnName = "hotel")
+    @JoinColumn(name = "hoteis", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Hoteis hoteis;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "quartos")

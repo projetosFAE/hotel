@@ -25,10 +25,10 @@ public class Ramais implements Persistent, Serializable {
     @Basic(optional = false)
     @Column(name = "ramal_numero")
     private int ramalNumero;
-    @JoinColumn(name = "ambiente", referencedColumnName = "ambiente")
+    @JoinColumn(name = "ambiente", referencedColumnName = "id")
     @ManyToOne
     private Ambientes ambientes;
-    @JoinColumn(name = "quarto", referencedColumnName = "quarto")
+    @JoinColumn(name = "quarto", referencedColumnName = "id")
     @ManyToOne
     private Quartos quartos;
 

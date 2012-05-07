@@ -21,13 +21,13 @@ public class Logradouroxusuario implements Persistent, Serializable {
     @SequenceGenerator(name = "logradouroxusuario-sequence",
     sequenceName = "logradouroxusuario_seq")
     private Long id;
-    @JoinColumn(name = "hotel", referencedColumnName = "hotel")
+    @JoinColumn(name = "hoteis", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Hoteis hoteis;
-    @JoinColumn(name = "usuario", referencedColumnName = "usuario")
+    @JoinColumn(name = "usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios usuarios;
-    @JoinColumn(name = "cep", referencedColumnName = "cep")
+    @JoinColumn(name = "cep", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Cep cep;
 

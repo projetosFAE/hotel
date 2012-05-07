@@ -28,13 +28,12 @@
     <class>domain.TiposQuartos</class>
     <class>domain.Usuarios</class>
     <class>domain.Usuarioxchat</class>
-    <shared-cache-mode>ALL</shared-cache-mode>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hotel_v1"/>
       <property name="javax.persistence.jdbc.password" value="porto90"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
     </properties>
   </persistence-unit>
 </persistence>

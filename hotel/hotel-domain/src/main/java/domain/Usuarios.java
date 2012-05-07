@@ -50,7 +50,7 @@ public class Usuarios implements Persistent, Serializable {
     private List<Reservas> reservasList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios")
     private List<Telefones> telefonesList;
-    @JoinColumn(name = "nivel", referencedColumnName = "nivel")
+    @JoinColumn(name = "nivel", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Niveis niveis;
     @Column(name = "usuario_data_registro")

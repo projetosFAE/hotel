@@ -26,7 +26,7 @@ public class Estados implements Persistent, Serializable {
     @Basic(optional = false)
     @Column(name = "estado_UF")
     private String estadoUF;
-    @JoinColumn(name = "pais", referencedColumnName = "pais")
+    @JoinColumn(name = "pais", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Paises paises;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estados")

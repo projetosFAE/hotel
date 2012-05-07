@@ -22,10 +22,10 @@ public class Quartoxcamas implements Persistent, Serializable {
     @SequenceGenerator(name = "quartoxcamas-sequence",
     sequenceName = "quartoxcamas_seq")
     private Long id;
-    @JoinColumn(name = "quarto", referencedColumnName = "quarto")
+    @JoinColumn(name = "quarto", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Quartos quartos;
-    @JoinColumn(name = "cama", referencedColumnName = "cama")
+    @JoinColumn(name = "cama", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Camas camas;
 

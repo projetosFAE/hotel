@@ -31,10 +31,10 @@ public class Financeiros implements Persistent, Serializable {
     @Column(name = "financeiro_data")
     @Temporal(TemporalType.DATE)
     private Date financeiroData;
-    @JoinColumn(name = "reserva", referencedColumnName = "reserva")
+    @JoinColumn(name = "reserva", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Reservas reservas;
-    @JoinColumn(name = "pagamento", referencedColumnName = "pagamento")
+    @JoinColumn(name = "pagamento", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pagamentos pagamentos;
 
