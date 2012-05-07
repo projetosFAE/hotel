@@ -28,7 +28,7 @@ public class Cidades implements Persistent, Serializable {
     private String cidadeNome;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cidades")
     private List<Cep> cepList;
-    @JoinColumn(name = "estado", referencedColumnName = "estado")
+    @JoinColumn(name = "estado", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Estados estados;
 

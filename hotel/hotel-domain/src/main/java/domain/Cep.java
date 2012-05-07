@@ -25,10 +25,10 @@ public class Cep implements Persistent, Serializable {
     @SequenceGenerator(name = "cep-sequence",
     sequenceName = "cep_seq")
     private Long id;
-    @JoinColumn(name = "logradouro", referencedColumnName = "logradouro")
+    @JoinColumn(name = "logradouro", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Logradouros logradouros;
-    @JoinColumn(name = "cidade", referencedColumnName = "cidade")
+    @JoinColumn(name = "cidade", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Cidades cidades;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cep")
