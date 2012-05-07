@@ -86,12 +86,26 @@
             <scope>provided</scope>
         </dependency>
         
+        <!-- Java EE Web -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        
         <!-- PrimeFaces -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>3.2</version>
+        </dependency>
         <dependency>  
-            <groupId>org.primefaces</groupId>  
-            <artifactId>primefaces</artifactId>  
-            <version>3.2</version>  
-        </dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>redmond</artifactId>  
+            <version>1.0.3</version>
+        </dependency>
+        
     </dependencies>
 
     <build>
