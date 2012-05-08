@@ -1,5 +1,5 @@
 /**
- * Crud.java
+ * User.java
  */
 package crud;
 
@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
  *
  * @author AlexPorto
  */
-public interface Crud extends Serializable {
+public interface User extends Serializable {
 
     <P extends Persistent> P find(String queryName, Object... params);
 
