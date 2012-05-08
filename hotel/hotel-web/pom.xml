@@ -19,20 +19,47 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
     </properties>
-
+    
     <dependencies>
+        <!-- Hotel -->
+
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
+            <groupId>br.com.cmd</groupId>
+            <artifactId>hotel-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
-                <!-- Java EE Web -->
+        <dependency>
+            <groupId>br.com.cmd</groupId>
+            <artifactId>hotel-ejb</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>br.com.cmd</groupId>
+            <artifactId>hotel-utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        
+        <!-- Java EE Web -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>6.0</version>
             <scope>provided</scope>
+        </dependency>
+        
+        <!-- PrimeFaces -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>3.2</version>
+        </dependency>
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>redmond</artifactId>  
+            <version>1.0.3</version>
         </dependency>
         
         <!-- Apache POI -->
@@ -85,27 +112,6 @@
             <version>1.6.2</version>
             <scope>provided</scope>
         </dependency>
-        
-        <!-- Java EE Web -->
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <!-- PrimeFaces -->
-        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>3.2</version>
-        </dependency>
-        <dependency>  
-            <groupId>org.primefaces.themes</groupId>  
-            <artifactId>redmond</artifactId>  
-            <version>1.0.3</version>
-        </dependency>
-        
     </dependencies>
 
     <build>
@@ -157,5 +163,12 @@
             </plugin>
         </plugins>
     </build>
-
+    <repositories>
+        <repository>  
+            <id>prime-repo</id>  
+            <name>PrimeFaces Maven Repository</name>  
+            <url>http://repository.primefaces.org</url>  
+            <layout>default</layout>  
+        </repository> 
+    </repositories>
 </project>
