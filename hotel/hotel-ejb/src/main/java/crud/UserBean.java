@@ -1,5 +1,5 @@
 /**
- * CrudBean.java
+ * UserBean.java
  */
 package crud;
 
@@ -18,7 +18,7 @@ import javax.persistence.Query;
  */
 @Stateless
 @Dependent
-public class CrudBean implements Crud, Serializable {
+public class UserBean implements User, Serializable {
 
     EntityManager emanager;
 
